@@ -1,0 +1,23 @@
+@model List<Student>
+@{
+    ViewData["Title"] = "Danh sách sinh viên";
+}
+
+<h1>Danh sách sinh viên</h1>
+
+<h2 class="h4">1. View Component: đếm sinh viên</h2>
+<p>StudentCount tự lấy danh sách, đếm số sinh viên rồi hiển thị kết quả.</p>
+@await Component.InvokeAsync("StudentCount")
+
+<h2 class="h4">2. Partial View: hiển thị thông tin sinh viên</h2>
+<p>Mỗi sinh viên được truyền vào cùng một partial có tên _StudentInfo.</p>
+@foreach (var student in Model)
+{
+    <partial name="_StudentInfo" model="student" />
+    <p>
+        <a asp-controller="Lessons" asp-action="Details" asp-route-id="@student.Id">Chi tiết (Conventional)</a>
+        |
+        <a asp-route="StudentById" asp-route-id="@student.Id">Chi tiết (Attribute)</a>
+    </p>
+}
+<h2>cảm ơn </h2>

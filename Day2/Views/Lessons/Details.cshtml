@@ -1,0 +1,12 @@
+@model Student
+@{
+    ViewData["Title"] = "Chi tiết sinh viên";
+}
+
+<h1>Chi tiết sinh viên</h1>
+<p>Cách định tuyến: <strong>@ViewData["RoutingType"]</strong></p>
+<p>Đường dẫn: <code>@Context.Request.Path</code></p>
+
+<partial name="_StudentInfo" model="Model" />
+
+<a asp-controller="Lessons" asp-action="Index">Quay lại danh sách</a>
